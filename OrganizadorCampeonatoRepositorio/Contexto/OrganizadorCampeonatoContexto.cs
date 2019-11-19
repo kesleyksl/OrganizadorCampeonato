@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrganizadorCampeonatoDominio.Entidades;
 using OrganizadorCampeonatoDominio.ObjetoDeValor;
+using OrganizadorCampeonatoRepositorio.Config;
 
 namespace OrganizadorCampeonatoRepositorio.Contexto
 {
@@ -18,6 +19,17 @@ namespace OrganizadorCampeonatoRepositorio.Contexto
 
         public OrganizadorCampeonatoContexto(DbContextOptions options) : base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new CampeonatoConfiguration());
+            modelBuilder.ApplyConfiguration(new FaseConfiguration());
+            modelBuilder.ApplyConfiguration(new MusicaConfiguration());
+            modelBuilder.ApplyConfiguration(new TipoFaseConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioFaseConfiguration());
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OrganizadorCampeonatoDominio.Entidades;
+using System;
 
 namespace OrganizadorCampeonatoRepositorio.Config
 {
-    public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
+    class MusicaConfiguration : IEntityTypeConfiguration<Musica>
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public void Configure(EntityTypeBuilder<Musica> builder)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }
