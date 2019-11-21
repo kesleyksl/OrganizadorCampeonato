@@ -2,9 +2,10 @@
 {
     public class UsuarioFase : Entidade
     {
-        public int FaseID { get; set; }
-        public int UsuarioID { get; set; }
-        public int MusicaID { get; set; }
+        public int Id { get; set; }
+        public int FaseId { get; set; }
+        public int CompetidorId { get; set; }
+        public int MusicaId { get; set; }
         public double Nota { get; set; }
 
         public override void Validate()

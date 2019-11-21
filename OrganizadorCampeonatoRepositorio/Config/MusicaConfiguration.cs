@@ -9,7 +9,18 @@ namespace OrganizadorCampeonatoRepositorio.Config
     {
         public void Configure(EntityTypeBuilder<Musica> builder)
         {
-            throw new NotImplementedException();
+            builder
+                .HasKey(m => m.Id);
+
+            builder
+                .Property(m => m.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(m => m.Cantor)
+                .IsRequired()
+                .HasMaxLength(50);
         }
     }
 }

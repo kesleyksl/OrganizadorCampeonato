@@ -28,8 +28,9 @@ namespace OrganizadorCampeonatoWeb
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("OrganizadorCampeonatoDB");
-            services.AddDbContext<OrganizadorCampeonatoContexto>(option => 
-                                                                    option.UseMySql(connectionString
+            services.AddDbContext<OrganizadorCampeonatoContexto>(option =>
+                                                                    option.UseLazyLoadingProxies()
+                                                                    .UseMySql(connectionString
                                                                     ,m=> m.MigrationsAssembly("OrganizadorCampeonatoRepositorio")));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

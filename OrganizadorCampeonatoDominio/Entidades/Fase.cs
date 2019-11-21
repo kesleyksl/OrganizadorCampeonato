@@ -6,15 +6,16 @@ namespace OrganizadorCampeonatoDominio.Entidades
 {
     public class Fase : Entidade
     {
-        public int FaseID { get; set; }
-        public int CampeonatoID { get; set; }
+        public int Id { get; set; }
+        public int CampeonatoId { get; set; }
+        public virtual Campeonato Campeonato { get; set; }
         public DateTime Data { get; set; }
-        public int TipoFaseID { get; set; }
+        public int TipoFaseId { get; set; }
         public TipoFase TipoFase { get; set; }
         public string Nome { get; set; }
-        public ICollection<Usuario> Competidores { get; set; }
-        public ICollection<Musica> Musicas { get; set; }
-        public ICollection<Usuario> Jurados { get; set; }
+        public virtual ICollection<Competidor> Competidores { get; set; }
+        public virtual ICollection<Musica> Musicas { get; set; }
+        public virtual ICollection<Jurado> Jurados { get; set; }
 
         public override void Validate()
         {

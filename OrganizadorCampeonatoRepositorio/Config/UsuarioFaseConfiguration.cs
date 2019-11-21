@@ -9,7 +9,22 @@ namespace OrganizadorCampeonatoRepositorio.Config
     {
         public void Configure(EntityTypeBuilder<UsuarioFase> builder)
         {
-            throw new NotImplementedException();
+            builder
+                .HasKey(uf => uf.Id);
+            builder
+                .Property(uf => uf.CompetidorId)
+                .IsRequired();
+            builder
+                .Property(uf => uf.MusicaId)
+                .IsRequired();
+            builder
+                .Property(uf => uf.FaseId)
+                .IsRequired();
+            builder
+                .Property(uf => uf.Nota)
+                .IsRequired();
+
+
         }
     }
 }

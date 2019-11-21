@@ -16,6 +16,9 @@ namespace OrganizadorCampeonatoRepositorio.Contexto
         public DbSet<Musica> Musicas { get; set; }
         public DbSet<UsuarioFase> UsuariosFase { get; set; }
         public DbSet<TipoFase> TiposFase { get; set; }
+        public DbSet<Competidor> Competidores { get; set; }
+        public DbSet<Jurado> Jurados { get; set; }
+        public DbSet<StatusInscricao> StatusInscricoes { get; set; }
 
         public OrganizadorCampeonatoContexto(DbContextOptions options) : base(options)
         {
@@ -28,6 +31,10 @@ namespace OrganizadorCampeonatoRepositorio.Contexto
             modelBuilder.ApplyConfiguration(new MusicaConfiguration());
             modelBuilder.ApplyConfiguration(new TipoFaseConfiguration());
             modelBuilder.ApplyConfiguration(new UsuarioFaseConfiguration());
+            modelBuilder.ApplyConfiguration(new CompetidorConfiguration());
+            modelBuilder.ApplyConfiguration(new StatusInscricaoConfiguration());
+            modelBuilder.ApplyConfiguration(new JuradoConfiguration());
+
 
             base.OnModelCreating(modelBuilder);
         }

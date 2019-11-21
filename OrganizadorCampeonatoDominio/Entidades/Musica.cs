@@ -2,9 +2,11 @@
 {
     public class Musica : Entidade
     {
-        public int MusicaID { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cantor { get; set; }
+        public int FaseId { get; set; }
+        public virtual Fase Fase { get; set; }
 
         public override void Validate()
         {

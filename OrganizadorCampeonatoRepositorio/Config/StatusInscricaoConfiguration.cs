@@ -5,9 +5,9 @@ using System;
 
 namespace OrganizadorCampeonatoRepositorio.Config
 {
-    public class TipoFaseConfiguration : IEntityTypeConfiguration<TipoFase>
+    public class StatusInscricaoConfiguration : IEntityTypeConfiguration<StatusInscricao>
     {
-        public void Configure(EntityTypeBuilder<TipoFase> builder)
+        public void Configure(EntityTypeBuilder<StatusInscricao> builder)
         {
 
         }

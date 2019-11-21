@@ -20,7 +20,7 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
 
        
 
-        public TEntity ObterPorID(int id)
+        public TEntity ObterPorId(int id)
         {
             throw new System.NotImplementedException();
         }

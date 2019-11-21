@@ -9,7 +9,22 @@ namespace OrganizadorCampeonatoRepositorio.Config
     {
         public void Configure(EntityTypeBuilder<Campeonato> builder)
         {
-            throw new NotImplementedException();
+            builder
+                .HasKey(c => c.Id);
+            builder
+                .Property(c => c.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(c => c.UsuarioId)
+                .IsRequired();
+
+            builder
+                .HasMany(c => c.Fases)
+                .WithOne(f => f.Campeonato);
+
+        
         }
     }
 }
