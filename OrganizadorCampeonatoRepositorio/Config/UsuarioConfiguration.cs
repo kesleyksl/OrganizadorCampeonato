@@ -12,6 +12,10 @@ namespace OrganizadorCampeonatoRepositorio.Config
 
             //Builder utiliza o padrão Fluent
             builder
+                .HasIndex(u => u.Email)
+                .IsUnique();
+                
+            builder
                 .Property(u => u.Email)
                 .IsRequired()
                 .HasMaxLength(80);
