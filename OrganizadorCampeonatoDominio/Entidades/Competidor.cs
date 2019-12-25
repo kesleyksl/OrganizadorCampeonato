@@ -12,7 +12,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public virtual Fase Fase { get; set; }
 
         public int StatusInscricaoId { get; set; }
-        public StatusInscricao StatusInscricao { get; set; }
+        public virtual StatusInscricao StatusInscricao { get; set; }
 
 
     }

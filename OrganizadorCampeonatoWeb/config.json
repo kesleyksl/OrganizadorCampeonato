@@ -1,7 +1,7 @@
 {
 
-  "ConnectionString": {
-    "SqlServerConnection":  "",
+  "ConnectionStrings": {
+    
     "OrganizadorCampeonatoDB": "server=localhost;uid=root;pwd=12345678;database=OrganizadorCampeonatoDB"
   }
 }

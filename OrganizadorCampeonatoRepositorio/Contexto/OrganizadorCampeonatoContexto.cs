@@ -36,6 +36,14 @@ namespace OrganizadorCampeonatoRepositorio.Contexto
             modelBuilder.ApplyConfiguration(new JuradoConfiguration());
 
 
+            modelBuilder.Entity<TipoFase>().HasData(new TipoFase() { TipoFaseId = 1, Nome = "JackAndJill" });
+            modelBuilder.Entity<TipoFase>().HasData(new TipoFase() { TipoFaseId = 2, Nome = "Improviso" });
+            modelBuilder.Entity<TipoFase>().HasData(new TipoFase() { TipoFaseId = 3, Nome = "Coreografia" });
+
+            modelBuilder.Entity<StatusInscricao>().HasData(new StatusInscricao() { Id = 1, Nome = "Confirmado" });
+            modelBuilder.Entity<StatusInscricao>().HasData(new StatusInscricao() { Id = 2, Nome = "Pendente" });
+            modelBuilder.Entity<StatusInscricao>().HasData(new StatusInscricao() { Id = 3, Nome = "Cancelado" });
+
             base.OnModelCreating(modelBuilder);
         }
     }

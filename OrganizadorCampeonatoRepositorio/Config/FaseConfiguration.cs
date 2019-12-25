@@ -21,9 +21,7 @@ namespace OrganizadorCampeonatoRepositorio.Config
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder
-                .Property(f => f.TipoFase)
-                .IsRequired();
+          
 
             builder
                 .HasMany(f => f.Competidores)

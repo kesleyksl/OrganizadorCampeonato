@@ -12,9 +12,7 @@ namespace OrganizadorCampeonatoRepositorio.Config
             builder
                   .HasKey(c => c.Id);
 
-            builder
-                .Property(c => c.StatusInscricao)
-                .IsRequired();
+
 
 
         }

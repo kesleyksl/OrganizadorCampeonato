@@ -2,9 +2,9 @@
 {
     public enum FormatoCampeonatoEnum
     {
-        JackAndJill = 0,
-        Improviso = 1,
-        Coreografia = 2
+        JackAndJill = 1,
+        Improviso = 2,
+        Coreografia = 3
 
     }
 }

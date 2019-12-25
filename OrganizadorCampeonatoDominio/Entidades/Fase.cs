@@ -11,7 +11,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public virtual Campeonato Campeonato { get; set; }
         public DateTime Data { get; set; }
         public int TipoFaseId { get; set; }
-        public TipoFase TipoFase { get; set; }
+        public virtual TipoFase TipoFase { get; set; }
         public string Nome { get; set; }
         public virtual ICollection<Competidor> Competidores { get; set; }
         public virtual ICollection<Musica> Musicas { get; set; }

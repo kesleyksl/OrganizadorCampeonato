@@ -6,8 +6,8 @@ namespace OrganizadorCampeonatoDominio.Enums
 {
     public enum StatusCompetidorEnum
     {
-        Confirmado = 0,
-        Pendente = 1,
-        Cancelado = 2
+        Confirmado = 1,
+        Pendente = 2,
+        Cancelado = 3
     }
 }

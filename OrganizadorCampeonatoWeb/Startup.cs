@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoRepositorio.Contexto;
+using OrganizadorCampeonatoRepositorio.Repositorios;
 
 namespace OrganizadorCampeonatoWeb
 {
@@ -32,6 +34,9 @@ namespace OrganizadorCampeonatoWeb
                                                                     option.UseLazyLoadingProxies()
                                                                     .UseMySql(connectionString
                                                                     ,m=> m.MigrationsAssembly("OrganizadorCampeonatoRepositorio")));
+           
+            services.AddScoped<ICampeonatoRepositorio, CampeonatoRepositorio>();
+            
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

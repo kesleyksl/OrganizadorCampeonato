@@ -11,7 +11,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public virtual Usuario Usuario { get; set; }
         //public int RegulamentoID { get; set; }
         
-        public ICollection<Fase> Fases { get; set; }
+        public virtual ICollection<Fase> Fases { get; set; }
 
         public override void Validate()
         {

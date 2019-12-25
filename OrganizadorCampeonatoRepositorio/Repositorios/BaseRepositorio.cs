@@ -1,43 +1,55 @@
 ﻿using OrganizadorCampeonatoDominio.Contratos;
+using OrganizadorCampeonatoRepositorio.Contexto;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace OrganizadorCampeonatoRepositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
+
+
+        protected readonly OrganizadorCampeonatoContexto OrganizadorCampeonatoContexto;
+        public BaseRepositorio(OrganizadorCampeonatoContexto organizadorCampeonatoContexto)
         {
+            OrganizadorCampeonatoContexto = organizadorCampeonatoContexto;
 
         }
         public void Adicionar(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            OrganizadorCampeonatoContexto.Set<TEntity>().Add(entity);
+            OrganizadorCampeonatoContexto.SaveChanges();
+
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            OrganizadorCampeonatoContexto.Set<TEntity>().Update(entity);
+            OrganizadorCampeonatoContexto.SaveChanges();
         }
 
        
 
         public TEntity ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return OrganizadorCampeonatoContexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new System.NotImplementedException();
+            return OrganizadorCampeonatoContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            OrganizadorCampeonatoContexto.Remove(entity);
+            OrganizadorCampeonatoContexto.SaveChanges();
+
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            OrganizadorCampeonatoContexto.Dispose();
         }
     }
 }
