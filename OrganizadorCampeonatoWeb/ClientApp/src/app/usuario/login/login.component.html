@@ -48,8 +48,13 @@
       </div>
     </div>
 
-    <button class="btn-primary btn-block mb-2" (click)="entrar()" type="submit">Entrar</button>
-   
+    <button class="btn-primary btn-block mb-2" (click)="entrar()" type="submit" [disabled]="ativar_spinner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+      Entrar
+    </button>
+   <div class="alert alert-danger" *ngIf="mensagem">
+     {{mensagem}}
+   </div>
 
   </form>
 

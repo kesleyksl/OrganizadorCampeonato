@@ -36,12 +36,14 @@ namespace OrganizadorCampeonatoWeb
                                                                     ,m=> m.MigrationsAssembly("OrganizadorCampeonatoRepositorio")));
            
             services.AddScoped<ICampeonatoRepositorio, CampeonatoRepositorio>();
-            
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
