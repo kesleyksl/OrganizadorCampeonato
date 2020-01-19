@@ -11,16 +11,16 @@ import { Usuario } from "../../modelo/usuario";
 
 
 
-export class UsuarioServico{
+export class UsuarioServico {
 
     private baseURL: string;
     private _usuario: Usuario;
 
-   
+
     set usuario(usuario: Usuario) {
         sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
         this._usuario = usuario;
-                //sessionStorage.setItem("email-usuario", usuarioRetorno.email);
+        //sessionStorage.setItem("email-usuario", usuarioRetorno.email);
     }
     get usuario(): Usuario {
         let usuario_json = sessionStorage.getItem("usuario-autenticado");
@@ -29,7 +29,7 @@ export class UsuarioServico{
     }
 
     public usuario_autenticado(): boolean {
-        return this._usuario != null && this._usuario.email !='' && this._usuario.senha != "";
+        return this._usuario != null && this._usuario.email != '' && this._usuario.senha != "";
     }
     public limpar_sessao() {
         sessionStorage.setItem("usuario-autenticado", "");
@@ -52,6 +52,23 @@ export class UsuarioServico{
         return this.http.post<Usuario>(this.baseURL + "api/Usuario/VerificarUsuario", body, { headers });
     }
 
-    
+    public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
+        const headers = new HttpHeaders().set('content-type', 'application/json');
+
+        var body = {
+            email: usuario.email,
+            senha: usuario.senha,
+            nome: usuario.nome,
+            sexo: usuario.sexo,
+            telefone: usuario.telefone
+
+        }
+
+        return this.http.post<Usuario>(this.baseURL + "api/Usuario/", body, { headers });
+
+
+    }
+
+
 
 }

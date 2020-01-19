@@ -1,0 +1,14 @@
+<h1 class="h4">Cadastro de Campeonato</h1>
+
+<label class="sr-only" for="inputNome">Nome</label>
+<input type="text" id="inputNome"
+       name="inputNome"
+       placeholder="Nome do Campeonato"
+       class="form-control mb-2 col-md-6"
+       [ngClass]="{
+            'is-invalid': telefone.invalid && (telefone.dirty || telefone.touched),
+           'is-valid': telefone.valid && (telefone.dirty || telefone.touched)
+           }"
+       [(ngModel)] ="campeonato.nome"
+       #nome="ngModel"
+       required/>
