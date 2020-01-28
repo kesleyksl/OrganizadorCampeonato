@@ -8,6 +8,7 @@ import { Campeonato } from "../../modelo/Campeonato";
     providedIn: "root"
 })
 export class CampeonatoServico implements OnInit {
+   
 
     private _baseUrl: string;
     public campeonatos: Campeonato[];
@@ -52,6 +53,10 @@ export class CampeonatoServico implements OnInit {
         return this.http.get<Campeonato>(this._baseUrl + "api/campeonato/obterCampeonatos");
     }
 
-
+    public enviarArquivo(arquivoSelecionado: File): Observable<boolean> {
+        const formData: FormData = new FormData();
+        formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
+        return this.http.post<boolean>(this._baseUrl + "api/Campeonato/EnviarArquivo", formData);
+    }
 
 }

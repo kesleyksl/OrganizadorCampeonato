@@ -101,7 +101,7 @@
            }"
               [(ngModel)]="usuario.sexo"
               #sexo="ngModel" required>
-        <option value="">Selecione...</option>
+        <option value="">Sexo...</option>
         <option value="F">Feminino</option>
         <option value="M">Masculino</option>
 
@@ -118,7 +118,12 @@
     <a [routerLink]='["/entrar"]'>Voltar</a>
       <div class="alert alert-danger" *ngIf="mensagem">
         {{mensagem}}
+
       </div>
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuário cadastrado com sucesso <a class="alert-link" [routerLink]='["/entrar"]'> Clique aqui</a> para entrar no sistema com a sua conta
+
+    </div>
 
 
 

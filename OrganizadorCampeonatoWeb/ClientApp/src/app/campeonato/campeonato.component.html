@@ -2,13 +2,26 @@
 
 <label class="sr-only" for="inputNome">Nome</label>
 <input type="text" id="inputNome"
-       name="inputNome"
+       name="nomeCampeonato"
        placeholder="Nome do Campeonato"
-       class="form-control mb-2 col-md-6"
-       [ngClass]="{
-            'is-invalid': telefone.invalid && (telefone.dirty || telefone.touched),
-           'is-valid': telefone.valid && (telefone.dirty || telefone.touched)
-           }"
-       [(ngModel)] ="campeonato.nome"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="campeonato.nome"
        #nome="ngModel"
-       required/>
+       required />
+<div class="invalid-feedback mb-2" *ngIf="nome.invalid &&  (nome.dirty || nome.touched)">
+  <div *ngIf="nome.errors.required">
+    Nome do campeonato é de preenchimento obrigatório
+
+  </div>
+</div>
+
+<div class="input-group mb-2" >
+  <div class="custom-file col-md-4">
+    <input type="file" id="inputFile" class="custom-file-input" (change)="inputChange($event.target.files)"/>
+    <label for="inputFile" class="custom-file-label">Escolha uma foto para o campeonato </label>
+
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>

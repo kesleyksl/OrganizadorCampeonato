@@ -64,7 +64,7 @@ export class UsuarioServico {
 
         }
 
-        return this.http.post<Usuario>(this.baseURL + "api/Usuario/", body, { headers });
+        return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
 
 
     }

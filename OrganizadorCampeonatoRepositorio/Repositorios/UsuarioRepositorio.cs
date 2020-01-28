@@ -15,5 +15,11 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
         {
             return OrganizadorCampeonatoContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
         }
+
+        public Usuario Obter(string email)
+        {
+            return OrganizadorCampeonatoContexto.Usuarios.FirstOrDefault(u => u.Email == email);
+
+        }
     }
 }

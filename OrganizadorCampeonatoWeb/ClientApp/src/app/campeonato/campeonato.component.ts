@@ -11,6 +11,7 @@ import { CampeonatoServico } from "../servicos/campeonato/campeonato.servico";
 export class CampeonatoComponent implements OnInit {
 
     public campeonato: Campeonato;
+    public arquivoSelecionado: File;
 
     constructor(private campeonatoServico: CampeonatoServico) {
 
@@ -18,7 +19,21 @@ export class CampeonatoComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.campeonato = new Campeonato();;
+        this.campeonato = new Campeonato();
+    }
+
+    public inputChange(files: FileList) {
+        this.arquivoSelecionado = files.item(0);
+        this.campeonatoServico.enviarArquivo(this.arquivoSelecionado)
+            .subscribe(
+                retorno => {
+                    console.log(retorno);
+                },
+                e => {
+                    console.log(e.error);
+                }
+            );
+        
     }
 
     public cadastrar() {
