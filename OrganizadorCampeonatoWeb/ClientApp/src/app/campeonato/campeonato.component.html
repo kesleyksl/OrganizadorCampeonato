@@ -5,7 +5,12 @@
        name="nomeCampeonato"
        placeholder="Nome do Campeonato"
        class="form-control mb-2 col-md-4"
-       [ngClass]=""
+       [ngClass]="{
+       'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+       'is-valid': nome.valid && (nome.dirty || nome.touched)
+
+
+       }"
        [(ngModel)]="campeonato.nome"
        #nome="ngModel"
        required />
@@ -24,4 +29,11 @@
   </div>
 </div>
 
-<button class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+<button class="btn btn-primary mb-2" (click)="cadastrar()" [disabled]="ativar_spinner">
+  <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+  Cadastrar
+</button>
+<div class="alet alert-danger col-md-4" *ngIf="mensagem">
+  {{mensagem}}
+
+</div>

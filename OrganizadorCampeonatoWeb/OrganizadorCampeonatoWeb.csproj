@@ -25,6 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\arquivos\teste.jpg_202021161545.jpg" />
+    <Content Remove="wwwroot\arquivos\teste.jpg_202021161659.jpg" />
+    <Content Remove="wwwroot\arquivos\teste.jpg_202021161920.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\src\app\autorizacao\guardar.rotas.ts" />
     <None Remove="ClientApp\src\app\campeonato\campeonato.component.ts" />
     <None Remove="ClientApp\src\app\modelo\Campeonato.ts" />

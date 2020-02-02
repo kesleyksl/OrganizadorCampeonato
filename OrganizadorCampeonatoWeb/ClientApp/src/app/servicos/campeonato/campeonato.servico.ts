@@ -31,7 +31,7 @@ export class CampeonatoServico implements OnInit {
 
 
 
-        return this.http.post<Campeonato>(this._baseUrl + "api/campeonato/cadastrar", JSON.stringify(campeonato), { headers: this.headers });
+        return this.http.post<Campeonato>(this._baseUrl + "api/campeonato", JSON.stringify(campeonato), { headers: this.headers });
     }
 
     public salvar(campeonato: Campeonato): Observable<Campeonato> {
@@ -53,10 +53,10 @@ export class CampeonatoServico implements OnInit {
         return this.http.get<Campeonato>(this._baseUrl + "api/campeonato/obterCampeonatos");
     }
 
-    public enviarArquivo(arquivoSelecionado: File): Observable<boolean> {
+    public enviarArquivo(arquivoSelecionado: File): Observable<string> {
         const formData: FormData = new FormData();
         formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
-        return this.http.post<boolean>(this._baseUrl + "api/Campeonato/EnviarArquivo", formData);
+        return this.http.post<string>(this._baseUrl + "api/Campeonato/EnviarArquivo", formData);
     }
 
 }

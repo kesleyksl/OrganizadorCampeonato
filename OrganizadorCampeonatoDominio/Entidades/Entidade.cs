@@ -23,9 +23,12 @@ namespace OrganizadorCampeonatoDominio.Entidades
                 return _mensagensValidacao ?? (_mensagensValidacao = new List<string>());
             }
         }
-
+        public string ObterMensagemValidacao()
+        {
+            return string.Join(". ", mensagemValidacao);
+        }
         public abstract void Validate();
-        protected bool ehValido
+        public bool EhValido
         {
             get { return !mensagemValidacao.Any(); }
         }

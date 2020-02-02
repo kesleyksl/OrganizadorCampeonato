@@ -2,6 +2,7 @@
 
 export class Campeonato{
     id: number;
-    nome: string;
+  nome: string;
+  nomeArquivo: string;
 
 }

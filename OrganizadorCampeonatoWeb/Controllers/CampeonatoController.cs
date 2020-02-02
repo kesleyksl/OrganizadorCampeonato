@@ -44,7 +44,11 @@ namespace OrganizadorCampeonatoWeb.Controllers
         {
             try
             {
-
+                campeonato.Validate();
+                if (!campeonato.EhValido)
+                {
+                    return BadRequest(campeonato.ObterMensagemValidacao());
+                }
                 _campeonatoRepositorio.Adicionar(campeonato);
                 return Created("api/campeonato", campeonato);
             }
@@ -71,7 +75,7 @@ namespace OrganizadorCampeonatoWeb.Controllers
                     formFile.CopyTo(streamArquivo);
                 }
 
-                return Ok();
+                return Json(novoNomeArquivo);
             }
             catch (Exception ex)
             {

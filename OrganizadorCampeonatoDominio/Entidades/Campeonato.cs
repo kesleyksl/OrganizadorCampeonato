@@ -10,7 +10,8 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
         //public int RegulamentoID { get; set; }
-        
+        public string NomeArquivo { get; set; }
+
         public virtual ICollection<Fase> Fases { get; set; }
 
         public override void Validate()
@@ -21,10 +22,10 @@ namespace OrganizadorCampeonatoDominio.Entidades
             {
                 AdicionarMensagem("O campeonato deve ter um nome");
             }
-            if (!Fases.Any())
-            {
-                AdicionarMensagem("O campeonato deve ter pelo menos uma fase");
-            }
+            //if (!Fases.Any())
+            //{
+            //    AdicionarMensagem("O campeonato deve ter pelo menos uma fase");
+            //}
         }
     }
 }
