@@ -28,9 +28,13 @@ namespace OrganizadorCampeonatoWeb.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+
+
             try
             {
-                return Ok(_campeonatoRepositorio.ObterTodos());
+
+
+                return Json(_campeonatoRepositorio.ObterTodos());
 
             }
             catch (Exception ex)
@@ -57,7 +61,19 @@ namespace OrganizadorCampeonatoWeb.Controllers
                 return BadRequest(ex.Message.ToString());
             }
         }
-
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody]Campeonato campeonato)
+        {
+            try
+            {
+                _campeonatoRepositorio.Remover(campeonato);
+                return Json(_campeonatoRepositorio.ObterTodos());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
         [HttpPost("EnviarArquivo")]
         public IActionResult EnviarArquivo()
         {
@@ -82,6 +98,8 @@ namespace OrganizadorCampeonatoWeb.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+
 
         private static string GerarNovoNomeArquivo(string nomeArquivo, string extensao)
         {

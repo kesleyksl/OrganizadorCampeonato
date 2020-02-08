@@ -1,3 +1,5 @@
+import { Campeonato } from "./Campeonato";
+
 export class Usuario{
     id: number;
     nome: string;
@@ -6,7 +8,7 @@ export class Usuario{
    
     email: string;
     telefone: string;
-    campeonato: object[];
+    campeonato: Campeonato[];
     competidor: object[];
     jurado: object[];
         //public virtual ICollection < Campeonato > Campeonatos { get; set; }

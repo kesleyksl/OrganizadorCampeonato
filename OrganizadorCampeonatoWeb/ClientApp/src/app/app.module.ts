@@ -14,32 +14,34 @@ import { GuardaRotas } from './autorizacao/guardar.rotas';
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 import { CampeonatoServico } from './servicos/campeonato/campeonato.servico';
-
+import { PesquisaCampeonatoComponent } from './campeonato/pesquisa/pesquisa.campeonato.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavMenuComponent,
-        HomeComponent,
+  declarations: [
+    AppComponent,
+    NavMenuComponent,
+    HomeComponent,
 
-        CampeonatoComponent,
-        LoginComponent,
-        CadastroUsuarioComponent
-    ],
-    imports: [
-        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        HttpClientModule,
-        FormsModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
+    CampeonatoComponent,
+    LoginComponent,
+    CadastroUsuarioComponent,
+    PesquisaCampeonatoComponent
+  ],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
 
-            { path: 'campeonato', component: CampeonatoComponent},
-            { path: 'entrar', component: LoginComponent },
-            { path: 'novo-usuario', component: CadastroUsuarioComponent }
-        ])
-    ],
-    providers: [UsuarioServico, CampeonatoServico],
-    bootstrap: [AppComponent]
+      { path: 'campeonato', component: CampeonatoComponent },
+      { path: 'entrar', component: LoginComponent },
+      { path: 'novo-usuario', component: CadastroUsuarioComponent },
+      { path: 'pesquisar-campeonato', component: PesquisaCampeonatoComponent }
+    ])
+  ],
+  providers: [UsuarioServico, CampeonatoServico],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

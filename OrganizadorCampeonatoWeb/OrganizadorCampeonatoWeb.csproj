@@ -25,14 +25,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\arquivos\chamadaAPI.PNG" />
     <Content Remove="wwwroot\arquivos\teste.jpg_202021161545.jpg" />
     <Content Remove="wwwroot\arquivos\teste.jpg_202021161659.jpg" />
     <Content Remove="wwwroot\arquivos\teste.jpg_202021161920.jpg" />
+    <Content Remove="wwwroot\arquivos\teste.jpg_202022165722.jpg" />
+    <Content Remove="wwwroot\arquivos\teste.jpg_202022165756.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\autorizacao\guardar.rotas.ts" />
     <None Remove="ClientApp\src\app\campeonato\campeonato.component.ts" />
+    <None Remove="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
     <None Remove="ClientApp\src\app\modelo\Campeonato.ts" />
     <None Remove="ClientApp\src\app\modelo\usuario.ts" />
     <None Remove="ClientApp\src\app\servicos\campeonato\campeonato.servico.ts" />
@@ -48,6 +52,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guardar.rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\campeonato.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\Campeonato.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\usuario.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\campeonato\campeonato.servico.ts" />

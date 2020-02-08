@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Campeonato } from "../modelo/Campeonato";
 import { CampeonatoServico } from "../servicos/campeonato/campeonato.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-campeonato",
@@ -15,7 +16,7 @@ export class CampeonatoComponent implements OnInit {
   public ativar_spinner: boolean;
   public mensagem: string;
 
-  constructor(private campeonatoServico: CampeonatoServico) {
+  constructor(private campeonatoServico: CampeonatoServico, private router: Router) {
 
   }
 
@@ -31,9 +32,10 @@ export class CampeonatoComponent implements OnInit {
       .subscribe(
         nomeArquivo => {
           this.campeonato.nomeArquivo = nomeArquivo;
-          alert(this.campeonato.nomeArquivo);
+     
           console.log(nomeArquivo);
           this.desativarEspera();
+
          
         },
         e => {
@@ -55,7 +57,7 @@ export class CampeonatoComponent implements OnInit {
         campeonatoJson => {
           console.log(campeonatoJson);
           this.desativarEspera();
-     
+          this.router.navigate(['/pesquisar-campeonato']);
         },
         e => {
           console.log(e.error);

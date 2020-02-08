@@ -4,5 +4,6 @@ namespace OrganizadorCampeonatoDominio.Contratos
 {
     public interface ICampeonatoRepositorio : IBaseRepositorio<Campeonato>
     {
+
     }
 }

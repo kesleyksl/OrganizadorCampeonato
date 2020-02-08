@@ -40,9 +40,9 @@ namespace OrganizadorCampeonatoRepositorio.Config
                 .Property(u => u.Senha)
                 .IsRequired()
                 .HasMaxLength(600);
-            builder
-                .HasMany(u => u.Campeonatos)
-                .WithOne(c => c.Usuario);
+            //builder
+            //    .HasMany(u => u.Campeonatos)
+            //    .WithOne(c => c.Usuario);
 
             builder
                 .HasMany(u => u.Competidores)

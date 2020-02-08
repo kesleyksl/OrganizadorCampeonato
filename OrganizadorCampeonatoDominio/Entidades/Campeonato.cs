@@ -8,7 +8,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public int Id { get; set; }
         public string Nome { get; set; }
         public int UsuarioId { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        //public virtual Usuario Usuario { get; set; }
         //public int RegulamentoID { get; set; }
         public string NomeArquivo { get; set; }
 

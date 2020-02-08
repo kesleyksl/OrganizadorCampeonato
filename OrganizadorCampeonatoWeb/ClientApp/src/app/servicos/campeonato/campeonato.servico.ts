@@ -39,15 +39,15 @@ export class CampeonatoServico implements OnInit {
         return this.http.post<Campeonato>(this._baseUrl + "api/campeonato/salvar", JSON.stringify(campeonato), { headers: this.headers });
     }
 
-    public deletar(campeonato: Campeonato): Observable<Campeonato> {
+  public deletar(campeonato: Campeonato): Observable<Campeonato[]> {
 
-        return this.http.post<Campeonato>(this._baseUrl + "api/campeonato/deletar", JSON.stringify(campeonato), { headers: this.headers });
+        return this.http.post<Campeonato[]>(this._baseUrl + "api/campeonato/deletar", JSON.stringify(campeonato), { headers: this.headers });
     }
     public obterTodosCampeonatos(): Observable<Campeonato[]> {
 
-        return this.http.get<Campeonato[]>(this._baseUrl + "api/campeonato/obterCampeonatos");
+        return this.http.get<Campeonato[]>(this._baseUrl + "api/campeonato");
     }
-    public obterCampeonatos(produtoId: number): Observable<Campeonato> {
+    public obterCampeonatos(campeonatoId: number): Observable<Campeonato> {
 
 
         return this.http.get<Campeonato>(this._baseUrl + "api/campeonato/obterCampeonatos");
