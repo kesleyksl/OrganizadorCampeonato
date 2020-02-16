@@ -22,7 +22,15 @@ export class CampeonatoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.campeonato = new Campeonato();
+    var campeonatoSessao = sessionStorage.getItem('campeonatoSessao');
+    if (campeonatoSessao) {
+      this.campeonato = JSON.parse(campeonatoSessao);
+    }
+    else {
+      this.campeonato = new Campeonato();
+    }
+
+ 
   }
 
   public inputChange(files: FileList) {

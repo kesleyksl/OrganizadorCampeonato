@@ -35,7 +35,8 @@ export class PesquisaCampeonatoComponent implements OnInit{
       )
   }
 
-  public  adicionarCampeonato() {
+  public adicionarCampeonato() {
+    sessionStorage.setItem("campeonatoSessao", "");
     this.router.navigate(['/campeonato']);
   }
 
@@ -51,5 +52,10 @@ export class PesquisaCampeonatoComponent implements OnInit{
         }
       );
     }
+  }
+
+  public editarCampeonato(campeonato: Campeonato) {
+    sessionStorage.setItem('campeonatoSessao', JSON.stringify(campeonato));
+    this.router.navigate(['/campeonato']);
   }
 }

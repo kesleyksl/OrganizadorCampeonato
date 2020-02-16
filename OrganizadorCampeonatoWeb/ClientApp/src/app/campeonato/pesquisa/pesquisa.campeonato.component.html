@@ -18,7 +18,7 @@
       <td>
         <img  style="width:40%; min-width: 120px;" src="../../../../../arquivos/{{c.nomeArquivo}}" *ngIf="c.nomeArquivo" alt="Flyer do campeonato" />
       </td>
-      <td><button class="btn btn-success btn-sm">Editar</button></td>
+      <td><button class="btn btn-success btn-sm" (click)="editarCampeonato(c)">Editar</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Deletar</button></td>
     </tr>
   </tbody>

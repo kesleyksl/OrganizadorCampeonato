@@ -53,7 +53,15 @@ namespace OrganizadorCampeonatoWeb.Controllers
                 {
                     return BadRequest(campeonato.ObterMensagemValidacao());
                 }
-                _campeonatoRepositorio.Adicionar(campeonato);
+                if(campeonato.Id > 0)
+                {
+                    _campeonatoRepositorio.Atualizar(campeonato);
+                }
+                else
+                {
+                    _campeonatoRepositorio.Adicionar(campeonato);
+                }
+              
                 return Created("api/campeonato", campeonato);
             }
             catch (Exception ex)

@@ -37,6 +37,8 @@
     <None Remove="ClientApp\src\app\autorizacao\guardar.rotas.ts" />
     <None Remove="ClientApp\src\app\campeonato\campeonato.component.ts" />
     <None Remove="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
+    <None Remove="ClientApp\src\app\loja\campeonato\loja.campeonato.component.ts" />
+    <None Remove="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <None Remove="ClientApp\src\app\modelo\Campeonato.ts" />
     <None Remove="ClientApp\src\app\modelo\usuario.ts" />
     <None Remove="ClientApp\src\app\servicos\campeonato\campeonato.servico.ts" />
@@ -53,6 +55,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guardar.rotas.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\campeonato.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\loja\campeonato\loja.campeonato.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\Campeonato.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\usuario.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\servicos\campeonato\campeonato.servico.ts" />
@@ -99,5 +103,7 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4package_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

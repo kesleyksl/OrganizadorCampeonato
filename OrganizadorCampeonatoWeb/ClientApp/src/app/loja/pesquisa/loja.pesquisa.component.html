@@ -1,0 +1,19 @@
+<div *ngIf="!campeonatos">Listando os campeonatos</div>
+
+<div class="container" *ngIf="campeonatos">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let c of campeonatos">
+      <a (click)="abrirCampeonato(c)" class="pointer">
+        <div class="card">
+          <img class="card-top" src="../../../../../arquivos/{{c.nomeArquivo}}" style="width:200px; height: 200px;" />
+          <div class="card-body">
+            <h5 class="card-title">{{c.nome | truncate: 15 }}</h5>
+            <div class="card-text">Texto do meu cartão</div>
+            <h5 class="h5">Preço do Campeonato</h5>
+          </div>
+
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
