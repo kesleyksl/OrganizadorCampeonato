@@ -17,6 +17,7 @@ import { CampeonatoServico } from './servicos/campeonato/campeonato.servico';
 import { PesquisaCampeonatoComponent } from './campeonato/pesquisa/pesquisa.campeonato.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { LojaCampeonatoComponent } from './loja/campeonato/loja.campeonato.component';
+import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LojaCampeonatoComponent } from './loja/campeonato/loja.campeonato.compo
     CadastroUsuarioComponent,
     PesquisaCampeonatoComponent,
     LojaPesquisaComponent,
-    LojaCampeonatoComponent
+    LojaCampeonatoComponent,
+    LojaEfetivarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +46,8 @@ import { LojaCampeonatoComponent } from './loja/campeonato/loja.campeonato.compo
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'pesquisar-campeonato', component: PesquisaCampeonatoComponent },
 
-      {path: 'loja-campeonato', component: LojaCampeonatoComponent}
+      { path: 'loja-campeonato', component: LojaCampeonatoComponent }, 
+      { path: 'loja-efetivar', component: LojaEfetivarComponent}
 
     ])
   ],
