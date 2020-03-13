@@ -29,13 +29,17 @@
   </div>
 </div>
 <div class="form-inline">
-  <button class="btn btn-primary mb-2" style="margin-right: 5px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+  <button class="btn btn-primary mb-2" style="margin-right: 5px;" (click)="cadastrar()"  [disabled]="ativar_spinner">
     <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
     Cadastrar
   </button>
+  <button class="btn btn-warning mb-2" style="margin-right: 5px;" (click)="editarFase()" [hidden]="!campeonato.id" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+    Fases
+  </button>
 
-  <button class="btn btn-secondary mb-2" [routerLink]="['/pesquisar-campeonato']" >
- 
+  <button class="btn btn-danger mb-2" [routerLink]="['/pesquisar-campeonato']">
+
     Cancelar
   </button>
 </div>

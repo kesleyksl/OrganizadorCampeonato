@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrganizadorCampeonatoRepositorio.Contexto;
 
 namespace OrganizadorCampeonatoRepositorio.Migrations
 {
     [DbContext(typeof(OrganizadorCampeonatoContexto))]
-    partial class OrganizadorCampeonatoContextoModelSnapshot : ModelSnapshot
+    [Migration("20200222142659_TesteTipoFas2")]
+    partial class TesteTipoFas2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,7 +255,7 @@ namespace OrganizadorCampeonatoRepositorio.Migrations
 
             modelBuilder.Entity("OrganizadorCampeonatoDominio.Entidades.Fase", b =>
                 {
-                    b.HasOne("OrganizadorCampeonatoDominio.Entidades.Campeonato")
+                    b.HasOne("OrganizadorCampeonatoDominio.Entidades.Campeonato", "Campeonato")
                         .WithMany("Fases")
                         .HasForeignKey("CampeonatoId")
                         .OnDelete(DeleteBehavior.Cascade);

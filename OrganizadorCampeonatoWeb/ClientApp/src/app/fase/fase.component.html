@@ -1,0 +1,77 @@
+<h1 class="h4">Cadastre uma fase para o campeonato <span class="text-uppercase">{{campeonato.nome}}</span></h1>
+
+<label class="sr-only" for="inputNome">Nome</label>
+<input type="text" id="inputNome"
+       name="nomeFase"
+       placeholder="Nome da Fase"
+       class="form-control mb-2 col-md-4"
+       
+       [(ngModel)]="fase.nome"
+       #nome="ngModel"
+       required />
+
+
+
+
+<select class="form-control col-md-4 mb-2"
+        id="tipoFase"
+        name="tipoFase"
+        (change)="inputChange($event.target)"
+        [(ngModel)]="fase.tipoFaseId" required>
+  <option *ngFor="let key of options" [value]="tipoFase[key]" [label]="key"></option>
+
+</select>
+
+<label class="sr-only" for="inputData">Data</label>
+<input type="date" id="inputData"
+       name="inputData"
+       placeholder="Data da fase"
+       class="form-control mb-2 col-md-2"
+
+       [(ngModel)]="fase.data"
+       #date="ngModel"
+       [value]="fase.data | date:'yyyy-MM-dd'"
+       required />
+
+
+<div class="form-inline">
+  <button class="btn btn-primary mb-2" style="margin-right: 5px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+    Cadastrar
+  </button>
+
+  <button class="btn btn-secondary mb-2" [routerLink]="['/pesquisar-campeonato']">
+
+    Cancelar
+  </button>
+</div>
+
+<div class="alet alert-danger col-md-4" *ngIf="mensagem">
+  {{mensagem}}
+
+</div>
+
+<h2 *ngIf="fases">Fases cadastradas</h2>
+<table class="table table-hover" *ngIf="fases">
+  <thead>
+
+    <tr>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Data</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let f of fases">
+      <td style="width:50%;vertical-align: middle !important;">{{f.nome}}</td>
+      <td style="width:50%;vertical-align: middle !important;">{{f.tipoFase["nome"]}}</td>
+      <td>
+        {{f.data | date:"dd/MM/yyyy"}}
+      </td>
+      <td><button class="btn btn-success btn-sm" (click)="editarFase(f)">Editar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletar(f)">Deletar</button></td>
+    </tr>
+  </tbody>
+</table>
+

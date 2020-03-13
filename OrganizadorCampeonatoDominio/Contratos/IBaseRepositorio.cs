@@ -9,6 +9,8 @@ namespace OrganizadorCampeonatoDominio.Contratos
         void Adicionar(TEntity entity);
         TEntity ObterPorId(int Id);
         IEnumerable<TEntity> ObterTodos();
+
+
         void Atualizar(TEntity entity);
         void Remover(TEntity entity);
     }

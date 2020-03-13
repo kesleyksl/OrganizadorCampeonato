@@ -1,4 +1,5 @@
 import { Usuario } from "./usuario";
+import { Fase } from "./Fase";
 
 
 export class Campeonato{
@@ -6,7 +7,7 @@ export class Campeonato{
   nome: string;
   usuarioId: number;
   nomeArquivo: string;
-  fases: any[];
+  fases: Fase[];
   usuario: Usuario;
 
 

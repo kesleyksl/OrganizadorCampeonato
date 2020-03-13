@@ -21,8 +21,7 @@ namespace OrganizadorCampeonatoRepositorio.Config
                 .IsRequired();
 
             builder
-                .HasMany(c => c.Fases)
-                .WithOne(f => f.Campeonato);
+                .HasMany(c => c.Fases);
 
         
         }

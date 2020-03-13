@@ -37,12 +37,14 @@ namespace OrganizadorCampeonatoWeb.Controllers
         {
             try
             {
+                
                 var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
                 if(usuarioCadastrado != null)
                 {
                     return BadRequest("E-mail já cadastrado no sistema");
                 }
 
+                usuario.Senha = Auxiliary.Cryptography.Encrypt(usuario.Senha);
                 _usuarioRepositorio.Adicionar(usuario);
                 return Ok();
             }
@@ -56,13 +58,14 @@ namespace OrganizadorCampeonatoWeb.Controllers
         {
             try
             {
-
+                usuario.Senha = Auxiliary.Cryptography.Encrypt(usuario.Senha);
                 var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
                if(usuarioRetorno != null)
                 {
                     return Ok(usuarioRetorno);
                 }
 
+                
                 return BadRequest("Usuário ou senha inválido");
             }
             catch (Exception ex)

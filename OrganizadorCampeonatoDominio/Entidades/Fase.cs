@@ -8,7 +8,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
     {
         public int Id { get; set; }
         public int CampeonatoId { get; set; }
-        public virtual Campeonato Campeonato { get; set; }
+        //public virtual Campeonato Campeonato { get; set; }
         public DateTime Data { get; set; }
         public int TipoFaseId { get; set; }
         public virtual TipoFase TipoFase { get; set; }
@@ -23,6 +23,16 @@ namespace OrganizadorCampeonatoDominio.Entidades
             if (string.IsNullOrEmpty(Nome))
             {
                 AdicionarMensagem("A fase deve ter um nome");
+
+            }           
+            if (TipoFaseId != 1 && TipoFaseId !=2 && TipoFaseId !=3)
+            {
+                AdicionarMensagem("A fase deve ter um tipo");
+
+            }         
+            if (Data <  DateTime.Now.Date)
+            {
+                AdicionarMensagem("Data inválida");
 
             }
         }

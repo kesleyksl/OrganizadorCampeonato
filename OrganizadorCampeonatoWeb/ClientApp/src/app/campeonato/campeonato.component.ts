@@ -57,15 +57,20 @@ export class CampeonatoComponent implements OnInit {
 
   }
 
+  public editarFase() {
+    sessionStorage.setItem("campeonatoCriado", JSON.stringify(this.campeonato));
+    this.router.navigate(['/fase']);;
+  }
+
   public cadastrar() {
     this.ativarEspera();
     this.campeonatoServico
       .cadastrar(this.campeonato)
       .subscribe(
         campeonatoJson => {
-          console.log(campeonatoJson);
+          sessionStorage.setItem("campeonatoCriado", JSON.stringify( campeonatoJson))
           this.desativarEspera();
-          this.router.navigate(['/pesquisar-campeonato']);
+          this.router.navigate(['/fase']);
         },
         e => {
           console.log(e.error);

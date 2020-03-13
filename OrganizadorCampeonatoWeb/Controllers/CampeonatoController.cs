@@ -32,9 +32,9 @@ namespace OrganizadorCampeonatoWeb.Controllers
 
             try
             {
+                object teste = _campeonatoRepositorio.ObterTodos();
 
-
-                return Json(_campeonatoRepositorio.ObterTodos());
+                return Json(teste);
 
             }
             catch (Exception ex)

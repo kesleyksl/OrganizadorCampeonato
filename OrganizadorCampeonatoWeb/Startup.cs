@@ -40,7 +40,8 @@ namespace OrganizadorCampeonatoWeb
                                                                     ,m=> m.MigrationsAssembly("OrganizadorCampeonatoRepositorio")));
            
             services.AddScoped<ICampeonatoRepositorio, CampeonatoRepositorio>();
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();           
+            services.AddScoped<IFaseRepositorio, FaseRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
