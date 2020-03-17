@@ -46,14 +46,14 @@ import { FaseServico } from './servicos/fase/fase.servico';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
 
-      { path: 'campeonato', component: CampeonatoComponent },
+      { path: 'campeonato', component: CampeonatoComponent, canActivate: [GuardaRotas] },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
-      { path: 'pesquisar-campeonato', component: PesquisaCampeonatoComponent },
+      { path: 'pesquisar-campeonato', component: PesquisaCampeonatoComponent, canActivate: [GuardaRotas] },
 
       { path: 'loja-campeonato', component: LojaCampeonatoComponent }, 
-      { path: 'loja-efetivar', component: LojaEfetivarComponent },
-      {path: 'fase', component: FaseComponent}
+      { path: 'loja-efetivar', component: LojaEfetivarComponent, canActivate: [GuardaRotas]},
+      { path: 'fase', component: FaseComponent, canActivate: [GuardaRotas]}
 
     ])
   ],

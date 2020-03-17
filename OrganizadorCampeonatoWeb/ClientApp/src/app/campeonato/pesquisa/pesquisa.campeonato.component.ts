@@ -3,6 +3,7 @@ import { Campeonato } from "../../modelo/Campeonato";
 import { CampeonatoServico } from "../../servicos/campeonato/campeonato.servico";
 import { Usuario } from "../../modelo/usuario";
 import { Router } from "@angular/router";
+import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 @Component({
 
   selector: "pesquisa-campeonato",
@@ -21,8 +22,8 @@ export class PesquisaCampeonatoComponent implements OnInit{
         
    }
 
-  constructor(private campeonatoServico: CampeonatoServico, private router: Router) {
-    this.campeonatoServico.obterTodosCampeonatos()
+  constructor(private campeonatoServico: CampeonatoServico, private router: Router, private usuarioServico: UsuarioServico) {
+    this.campeonatoServico.obterTodosCampeonatosUsuario(this.usuarioServico.usuario)
       .subscribe(
         campeonatos => {
           console.log(campeonatos);

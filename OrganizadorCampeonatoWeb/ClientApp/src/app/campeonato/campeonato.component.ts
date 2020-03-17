@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { Campeonato } from "../modelo/Campeonato";
 import { CampeonatoServico } from "../servicos/campeonato/campeonato.servico";
 import { Router } from "@angular/router";
+import { UsuarioServico } from "../servicos/usuario/usuario.servico";
 
 @Component({
   selector: "app-campeonato",
@@ -16,7 +17,7 @@ export class CampeonatoComponent implements OnInit {
   public ativar_spinner: boolean;
   public mensagem: string;
 
-  constructor(private campeonatoServico: CampeonatoServico, private router: Router) {
+  constructor(private campeonatoServico: CampeonatoServico, private router: Router, private usuarioServico: UsuarioServico) {
 
   }
 
@@ -64,6 +65,7 @@ export class CampeonatoComponent implements OnInit {
 
   public cadastrar() {
     this.ativarEspera();
+    this.campeonato.usuarioId = this.usuarioServico.usuario.id;
     this.campeonatoServico
       .cadastrar(this.campeonato)
       .subscribe(

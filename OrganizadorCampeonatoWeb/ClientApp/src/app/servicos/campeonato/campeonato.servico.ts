@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { getBaseUrl } from "../../../main";
 import { Campeonato } from "../../modelo/Campeonato";
+import { Usuario } from "../../modelo/usuario";
 
 @Injectable({
     providedIn: "root"
@@ -46,6 +47,10 @@ export class CampeonatoServico implements OnInit {
     public obterTodosCampeonatos(): Observable<Campeonato[]> {
 
         return this.http.get<Campeonato[]>(this._baseUrl + "api/campeonato");
+    }
+    public obterTodosCampeonatosUsuario(usuario: Usuario): Observable<Campeonato[]> {
+
+      return this.http.post<Campeonato[]>(this._baseUrl + "api/Campeonato/Campeonatos", JSON.stringify(usuario), { headers: this.headers });
     }
     public obterCampeonatos(campeonatoId: number): Observable<Campeonato> {
 

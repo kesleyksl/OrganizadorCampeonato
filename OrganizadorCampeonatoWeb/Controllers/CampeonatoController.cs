@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoDominio.Entidades;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -104,6 +105,22 @@ namespace OrganizadorCampeonatoWeb.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost("Campeonatos")]
+        public IActionResult Campeonatos([FromBody]Usuario usuario)
+        {
+            try
+            {
+                List<Campeonato> campeonatos = new List<Campeonato>();
+
+                campeonatos = _campeonatoRepositorio.CampeonatosUsuario(usuario.Id);
+                return Json(campeonatos);
+            }
+            catch
+            {
+                return BadRequest();
             }
         }
 
