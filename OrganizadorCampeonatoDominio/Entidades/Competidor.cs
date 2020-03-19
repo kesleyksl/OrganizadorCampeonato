@@ -8,8 +8,8 @@ namespace OrganizadorCampeonatoDominio.Entidades
         public int CampeonatoId { get; set; }
         public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
-        public int FaseId { get; set; }
-        public virtual Fase Fase { get; set; }
+        //public int FaseId { get; set; }
+        //public virtual Fase Fase { get; set; }
 
         public int StatusInscricaoId { get; set; }
         public virtual StatusInscricao StatusInscricao { get; set; }

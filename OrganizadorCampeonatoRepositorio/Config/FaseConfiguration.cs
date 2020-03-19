@@ -23,9 +23,9 @@ namespace OrganizadorCampeonatoRepositorio.Config
 
           
 
-            builder
-                .HasMany(f => f.Competidores)
-                .WithOne(c => c.Fase);
+            //builder
+            //    .HasMany(f => f.Competidores)
+            //    .WithOne(c => c.Fase);
 
             builder
                 .HasMany(f => f.Musicas)

@@ -6,6 +6,8 @@ namespace OrganizadorCampeonatoDominio.Contratos
     {
         Usuario Obter(string email, string senha);
         Usuario Obter(string email);
+        
+
 
     }
 }

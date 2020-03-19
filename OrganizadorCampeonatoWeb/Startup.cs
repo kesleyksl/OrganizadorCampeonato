@@ -29,7 +29,9 @@ namespace OrganizadorCampeonatoWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -42,6 +44,7 @@ namespace OrganizadorCampeonatoWeb
             services.AddScoped<ICampeonatoRepositorio, CampeonatoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();           
             services.AddScoped<IFaseRepositorio, FaseRepositorio>();
+            services.AddScoped<ICompetIdorRepositorio, CompetIdorRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -2,23 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var LojaCarrinhoCompras = /** @class */ (function () {
     function LojaCarrinhoCompras() {
-        this.campeonatos = [];
     }
-    LojaCarrinhoCompras.prototype.adicionar = function (campeonato) {
-        var campeonatoLocalStorage = localStorage.getItem("campeonatoStorage");
-        if (!campeonatoLocalStorage) {
-            this.campeonatos.push(campeonato);
-        }
-        else {
-            this.campeonatos = JSON.parse(campeonatoLocalStorage);
-            this.campeonatos.push(campeonato);
-        }
-        localStorage.setItem("campeonatoStorage", JSON.stringify(this.campeonatos));
+    LojaCarrinhoCompras.prototype.participar = function (campeonato) {
+        this.campeonato = campeonato;
+        sessionStorage.setItem("campeonatoStorage", JSON.stringify(this.campeonato));
     };
-    LojaCarrinhoCompras.prototype.obterCampeonatos = function () {
-        var campeonatoLocalStorage = localStorage.getItem("campeonatoStorage");
+    LojaCarrinhoCompras.prototype.obterCampeonato = function () {
+        var campeonatoLocalStorage = sessionStorage.getItem("campeonatoStorage");
         if (campeonatoLocalStorage) {
             return JSON.parse(campeonatoLocalStorage);
+        }
+        else {
+            this.router.navigate(['/loja-pesquisa']);
         }
     };
     LojaCarrinhoCompras.prototype.removerCampeonato = function (campeonato) {

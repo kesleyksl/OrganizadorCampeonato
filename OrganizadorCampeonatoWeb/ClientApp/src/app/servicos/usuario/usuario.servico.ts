@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { getBaseUrl } from "../../../main";
 import { Usuario } from "../../modelo/usuario";
+import { Competidor } from "../../modelo/Competidor";
 
 
 @Injectable({
@@ -67,7 +68,14 @@ export class UsuarioServico {
         return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
 
 
-    }
+  }
+
+  public competir(competidor: Competidor): Observable<Competidor> {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    return this.http.post<Competidor>(this.baseURL + "api/usuario/competir", JSON.stringify(competidor), { headers });
+
+  }
 
 
 

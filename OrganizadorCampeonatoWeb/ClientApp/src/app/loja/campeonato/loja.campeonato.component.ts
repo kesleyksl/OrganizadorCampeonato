@@ -29,8 +29,8 @@ export class LojaCampeonatoComponent implements OnInit {
 
   }
 
-  public comprar() {
-    this.carrinhoCompras.adicionar(this.campeonato)
+  public participar() {
+    this.carrinhoCompras.participar(this.campeonato);
 
     this.router.navigate(['/loja-efetivar']);
   }

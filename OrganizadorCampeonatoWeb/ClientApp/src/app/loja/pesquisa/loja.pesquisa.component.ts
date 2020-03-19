@@ -28,9 +28,10 @@ export class LojaPesquisaComponent implements OnInit {
     )
   }
 
-  public abrirCampeonato(campeonato: Campeonato) {
-    sessionStorage.setItem("campeonatoDetalhe", JSON.stringify(campeonato));
-    this.router.navigate(['/loja-campeonato']);
+  public participar(campeonato: Campeonato) {
+    
+    sessionStorage.setItem("campeonatoStorage", JSON.stringify(campeonato));
+    this.router.navigate(['/loja-efetivar']);
 
   }
 }

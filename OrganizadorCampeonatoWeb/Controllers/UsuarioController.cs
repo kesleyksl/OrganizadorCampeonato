@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoDominio.Entidades;
+using OrganizadorCampeonatoDominio.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,12 @@ namespace OrganizadorCampeonatoWeb.Controllers
     {
 
         private readonly IUsuarioRepositorio _usuarioRepositorio;
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        private readonly ICompetIdorRepositorio _competidorRepositorio;
+        
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, ICompetIdorRepositorio competIdorRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
+            _competidorRepositorio = competIdorRepositorio;
 
         }
 
@@ -74,5 +78,26 @@ namespace OrganizadorCampeonatoWeb.Controllers
             }
         }
 
+
+        [HttpPost("Competir")]
+        public ActionResult Competir([FromBody] Competidor competidor)
+        {
+            try
+            {
+                if (_competidorRepositorio.ExisteInscricao(competidor))
+                    return BadRequest("Competidor já inscrito nesse campeonato");
+                else if (_competidorRepositorio.EhOrganizador(competidor))
+                    return BadRequest("Você não pode competir no seu próprio campeonato");
+
+                competidor.StatusInscricaoId = (int)StatusCompetidorEnum.Pendente;
+                _competidorRepositorio.Competir(competidor);
+                return Ok();
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
     }
 }

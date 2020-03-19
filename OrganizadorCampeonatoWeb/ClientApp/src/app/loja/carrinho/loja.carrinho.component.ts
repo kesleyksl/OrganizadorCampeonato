@@ -1,28 +1,31 @@
 import { Campeonato } from "../../modelo/Campeonato";
+import { Router } from "@angular/router";
 
 
 
 export class LojaCarrinhoCompras {
-  public campeonatos: Campeonato[] = [];
-  public adicionar(campeonato: Campeonato) {
-    var campeonatoLocalStorage = localStorage.getItem("campeonatoStorage");
-    if (!campeonatoLocalStorage) {
-      this.campeonatos.push(campeonato);
+  public campeonato: Campeonato;
+  private router: Router ;
 
-    }
-    else {
-      this.campeonatos = JSON.parse(campeonatoLocalStorage);
-      this.campeonatos.push(campeonato);
 
-    }
-    localStorage.setItem("campeonatoStorage", JSON.stringify(this.campeonatos));
+  public participar(campeonato: Campeonato) {
+    
+    
+      this.campeonato = campeonato;
+
+
+    sessionStorage.setItem("campeonatoStorage", JSON.stringify(this.campeonato));
 
   }
 
-  public obterCampeonatos(): Campeonato[]{
-    var campeonatoLocalStorage = localStorage.getItem("campeonatoStorage");
+  public obterCampeonato(): Campeonato{
+    var campeonatoLocalStorage = sessionStorage.getItem("campeonatoStorage");
+
     if (campeonatoLocalStorage) {
       return JSON.parse(campeonatoLocalStorage)
+    }
+    else {
+      this.router.navigate(['/loja-pesquisa']);
     }
 
 

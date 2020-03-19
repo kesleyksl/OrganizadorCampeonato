@@ -18,8 +18,14 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
 
         public Usuario Obter(string email)
         {
+          
+            
             return OrganizadorCampeonatoContexto.Usuarios.FirstOrDefault(u => u.Email == email);
 
         }
+
+
+
+     
     }
 }
