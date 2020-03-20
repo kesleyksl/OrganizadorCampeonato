@@ -20,6 +20,7 @@ import { LojaCampeonatoComponent } from './loja/campeonato/loja.campeonato.compo
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { FaseComponent } from './fase/fase.component';
 import { FaseServico } from './servicos/fase/fase.servico';
+import { CompetidoresComponent } from './campeonato/competidores/competidores.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FaseServico } from './servicos/fase/fase.servico';
     LojaCampeonatoComponent,
     LojaEfetivarComponent,
     FaseComponent,
+    CompetidoresComponent,
     
   ],
   imports: [
@@ -53,7 +55,8 @@ import { FaseServico } from './servicos/fase/fase.servico';
 
       { path: 'loja-campeonato', component: LojaCampeonatoComponent }, 
       { path: 'loja-efetivar', component: LojaEfetivarComponent, canActivate: [GuardaRotas]},
-      { path: 'fase', component: FaseComponent, canActivate: [GuardaRotas]}
+      { path: 'fase', component: FaseComponent, canActivate: [GuardaRotas]},
+      { path: 'campeonato-competidores', component: CompetidoresComponent, canActivate: [GuardaRotas]}
 
     ])
   ],

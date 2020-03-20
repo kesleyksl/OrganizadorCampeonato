@@ -6,6 +6,7 @@ namespace OrganizadorCampeonatoDominio.Entidades
     {
         public int Id { get; set; }
         public int CampeonatoId { get; set; }
+        public virtual Campeonato Campeonato { get; set; }
         public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
         //public int FaseId { get; set; }

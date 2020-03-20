@@ -16,8 +16,9 @@
     <tr *ngFor="let c of campeonatos">
       <td style="width:50%;vertical-align: middle !important;">{{c.nome}}</td>
       <td>
-        <img  style="width:40%; min-width: 120px;" src="../../../../../arquivos/{{c.nomeArquivo}}" *ngIf="c.nomeArquivo" alt="Flyer do campeonato" />
+        <img style="width:40%; min-width: 120px;" src="../../../../../arquivos/{{c.nomeArquivo}}" *ngIf="c.nomeArquivo" alt="Flyer do campeonato" />
       </td>
+      <td><button class="btn btn-primary btn-sm" (click)="gerenciarCampeonato(c.id)">Inscrições</button></td>
       <td><button class="btn btn-success btn-sm" (click)="editarCampeonato(c)">Editar</button></td>
       <td><button class="btn btn-warning btn-sm" (click)="editarFase(c)">Fases</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Deletar</button></td>

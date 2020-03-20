@@ -1,0 +1,26 @@
+
+<h1 class="h4 titulo mb-2">Competidores inscritos no Campeonato {{campeonato.campeonato.nome}}</h1>
+<p *ngIf="!competidores">Carregando Competidores...</p>
+<table class="table table-hover" *ngIf="competidores">
+  <thead>
+
+    <tr>
+      <th>Nome</th>
+      <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of competidores">
+      <td style="width:50%;vertical-align: middle !important;">{{c.usuario.nome}}</td>
+      <td>
+        {{c.statusInscricao.nome}}
+      </td>
+
+
+      <td><button class="btn btn-success btn-sm" *ngIf="c.statusInscricao.id == 2" (click)="editarCampeonato(c)">Confirmar Inscrição</button></td>
+
+      <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Cancelar Inscrição</button></td>
+    </tr>
+  </tbody>
+</table>

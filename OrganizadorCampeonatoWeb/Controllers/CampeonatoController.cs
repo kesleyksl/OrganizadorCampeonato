@@ -16,13 +16,15 @@ namespace OrganizadorCampeonatoWeb.Controllers
         private readonly ICampeonatoRepositorio _campeonatoRepositorio;
         private IHttpContextAccessor _httpContextAccessor;
         private IHostingEnvironment _hostingEnvironment;
+        private ICompetIdorRepositorio _competidorRepositorio;
         public CampeonatoController(ICampeonatoRepositorio campeonatoRepositorio,
                                         IHttpContextAccessor httpContextAccessor,
-                                        IHostingEnvironment hostingEnvironment)
+                                        IHostingEnvironment hostingEnvironment, ICompetIdorRepositorio competIdorRepositorio)
         {
             _campeonatoRepositorio = campeonatoRepositorio;
             _httpContextAccessor = httpContextAccessor;
             _hostingEnvironment = hostingEnvironment;
+            _competidorRepositorio = competIdorRepositorio;
 
         }
 
@@ -44,7 +46,19 @@ namespace OrganizadorCampeonatoWeb.Controllers
 
             }
         }
-
+        [HttpPost("GetCompetidores")]
+        public IActionResult GetCompetidores([FromBody]int campeonatoId)
+        {
+            try
+            {
+                object competidores = _competidorRepositorio.GetCompetidores(campeonatoId);
+                return Json(competidores);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message.ToString());
+            }
+        }
         public IActionResult Post([FromBody]Campeonato campeonato)
         {
             try

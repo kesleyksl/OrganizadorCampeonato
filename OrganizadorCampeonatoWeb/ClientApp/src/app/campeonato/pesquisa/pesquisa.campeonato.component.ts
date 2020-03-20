@@ -4,6 +4,7 @@ import { CampeonatoServico } from "../../servicos/campeonato/campeonato.servico"
 import { Usuario } from "../../modelo/usuario";
 import { Router } from "@angular/router";
 import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
+import { Competidor } from "../../modelo/Competidor";
 @Component({
 
   selector: "pesquisa-campeonato",
@@ -15,7 +16,7 @@ import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 export class PesquisaCampeonatoComponent implements OnInit{
 
   public campeonatos: Campeonato[];
-
+  public competidores: Competidor[];
 
 
   ngOnInit(): void {
@@ -61,5 +62,20 @@ export class PesquisaCampeonatoComponent implements OnInit{
   public editarCampeonato(campeonato: Campeonato) {
     sessionStorage.setItem('campeonatoSessao', JSON.stringify(campeonato));
     this.router.navigate(['/campeonato']);
+  }
+
+  public gerenciarCampeonato(campeoantoId: number) {
+
+    this.campeonatoServico.getCompetidores(campeoantoId).subscribe(
+      competidores => {
+        this.competidores = competidores;
+        console.log(JSON.stringify(competidores));
+        sessionStorage.setItem("competidores", JSON.stringify(this.competidores));
+        this.router.navigate(['/campeonato-competidores']);
+      },
+      e => {
+        console.log(e.error);
+      }
+    );
   }
 }

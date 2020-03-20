@@ -1,6 +1,7 @@
 ﻿using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoDominio.Entidades;
 using OrganizadorCampeonatoRepositorio.Contexto;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OrganizadorCampeonatoRepositorio.Repositorios
@@ -22,7 +23,10 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
 
             return false;
         }
-
+        public List<Competidor> GetCompetidores(int campeonatoId)
+        {
+            return OrganizadorCampeonatoContexto.Competidores.Where(c => c.CampeonatoId == campeonatoId).ToList();
+        }
         public void Competir(Competidor competidor)
         {
 
