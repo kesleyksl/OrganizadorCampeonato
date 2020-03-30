@@ -59,18 +59,38 @@
       <th>Nome</th>
       <th>Tipo</th>
       <th>Data</th>
-
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let f of fases">
-      <td style="width:50%;vertical-align: middle !important;">{{f.nome}}</td>
-      <td style="width:50%;vertical-align: middle !important;">{{f.tipoFase["nome"]}}</td>
-      <td>
-        {{f.data | date:"dd/MM/yyyy"}}
-      </td>
-      <td><button class="btn btn-success btn-sm" (click)="editarFase(f)">Editar</button></td>
-      <td><button class="btn btn-danger btn-sm" (click)="deletar(f)">Deletar</button></td>
+
+    <tr *ngFor="let f of fases" style="cursor:pointer">
+      
+        <td style="width:50%;vertical-align: middle !important;">{{f.nome}}</td>
+        <td style="width:50%;vertical-align: middle !important;">{{f.tipoFase["nome"]}}</td>
+        <td>
+          {{f.data | date:"dd/MM/yyyy"}}
+        </td>
+
+
+        <td>
+          <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gerênciar
+            </button>
+            <div class="dropdown-menu">
+              <button class="btn btn-success btn-sm dropdown-item" (click)="competidoresFase(f)">Competidores</button>
+              <button class="btn btn-success btn-sm dropdown-item" (click)="editarFase(f)">Editar</button>
+              <button class="btn btn-danger btn-sm dropdown-item" (click)="deletar(f)">Deletar</button>
+
+            </div>
+          </div>
+
+
+
+
+        </td>
+   
     </tr>
   </tbody>
 </table>

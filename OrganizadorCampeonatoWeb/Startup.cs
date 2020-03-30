@@ -44,7 +44,9 @@ namespace OrganizadorCampeonatoWeb
             services.AddScoped<ICampeonatoRepositorio, CampeonatoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();           
             services.AddScoped<IFaseRepositorio, FaseRepositorio>();
-            services.AddScoped<ICompetIdorRepositorio, CompetIdorRepositorio>();
+            services.AddScoped<ICompetIdorRepositorio, CompetIdorRepositorio>();          
+            services.AddScoped<IUsuarioFaseRepositorio, UsuarioFaseRepositorio>();
+       
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

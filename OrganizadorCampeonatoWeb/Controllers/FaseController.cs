@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoDominio.Entidades;
 using System;
@@ -17,15 +18,17 @@ namespace OrganizadorCampeonatoWeb.Controllers
         private IHttpContextAccessor _httpContextAccessor;
         private IHostingEnvironment _hostingEnvironment;
         private ICampeonatoRepositorio _campeonatoRepositorio;
+        private IUsuarioFaseRepositorio _usuarioFaseRepositorio;
 
         public FaseController(IFaseRepositorio faseRepositorio,
                                        IHttpContextAccessor httpContextAccessor,
-                                       IHostingEnvironment hostingEnvironment, ICampeonatoRepositorio campeonatoRepositorio)
+                                       IHostingEnvironment hostingEnvironment, ICampeonatoRepositorio campeonatoRepositorio, IUsuarioFaseRepositorio usuarioFaseRepositorio)
         {
             _faseRepositorio = faseRepositorio;
             _httpContextAccessor = httpContextAccessor;
             _hostingEnvironment = hostingEnvironment;
             _campeonatoRepositorio = campeonatoRepositorio;
+            _usuarioFaseRepositorio = usuarioFaseRepositorio;
 
         }
 
@@ -86,6 +89,60 @@ namespace OrganizadorCampeonatoWeb.Controllers
 
             return Json(_faseRepositorio.ObterFases(campeonato.Id));
         }
+         [HttpPost("CadastrarCompetidor")]
+        public IActionResult CadastrarCompetidor([FromBody]UsuarioFase usuarioFase)
+        {
+
+
+            if (usuarioFase.CompetidorId > 0 && usuarioFase.FaseId > 0)
+            {
+                
+                _usuarioFaseRepositorio.Adicionar(usuarioFase);
+            }
+            else
+            {
+                return BadRequest("Não foi possível concluir a operação");
+            }
+
+            return Ok();
+        }
+         [HttpPost("GetCompetidoresFase")]
+        public IActionResult GetCompetidoresFase([FromBody]int faseId)
+        {
+            dynamic competidores;
+
+            if (faseId > 0)
+            {
+                
+                competidores =  _usuarioFaseRepositorio.GetCompetidoresFase(faseId);
+            }
+            else
+            {
+                return BadRequest("Não foi possível concluir a operação");
+            }
+
+            return Json(competidores);
+        }
+
+        
+         [HttpPost("GetCompetidoresNaoCadastradoNaFase")]
+        public IActionResult GetCompetidoresNaoCadastradoNaFase([FromBody]JObject campeonatoFase)
+        {
+            dynamic competidores;
+            int faseId = int.Parse(campeonatoFase["faseId"].ToString());
+            int campeonatoId = int.Parse(campeonatoFase["campeonatoId"].ToString());
+            if (faseId> 0)
+            {
+                
+                competidores =  _usuarioFaseRepositorio.GetCompetidoresNaoCadastradoNaFase(campeonatoId, faseId);
+            }
+            else
+            {
+                return BadRequest("Não foi possível concluir a operação");
+            }
+
+            return Json(competidores);
+        }
 
 
         [HttpPost("Deletar")]
@@ -95,6 +152,21 @@ namespace OrganizadorCampeonatoWeb.Controllers
             {
                 _faseRepositorio.Remover(fase);
                 return Json(_campeonatoRepositorio.ObterPorId(fase.CampeonatoId));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+        [HttpPost("DeletarCompetidor")]
+        public IActionResult DeletarCompetidor([FromBody]JObject jobject)
+        {
+            UsuarioFase fase = new UsuarioFase { CompetidorId = int.Parse(jobject["competidorId"].ToString()), FaseId = int.Parse(jobject["faseId"].ToString()), Id = int.Parse(jobject["usuarioFaseId"].ToString()) };
+
+            try
+            {
+                _usuarioFaseRepositorio.Remover(fase);
+                return Ok();
             }
             catch (Exception ex)
             {

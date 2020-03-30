@@ -19,11 +19,12 @@ export class PesquisaCampeonatoComponent implements OnInit{
   public competidores: Competidor[];
 
 
-  ngOnInit(): void {
-        
-   }
+ 
 
   constructor(private campeonatoServico: CampeonatoServico, private router: Router, private usuarioServico: UsuarioServico) {
+  
+  }
+  ngOnInit(): void {
     this.campeonatoServico.obterTodosCampeonatosUsuario(this.usuarioServico.usuario)
       .subscribe(
         campeonatos => {
@@ -34,7 +35,9 @@ export class PesquisaCampeonatoComponent implements OnInit{
           console.log(e.error);
         }
 
-      )
+    );
+    
+
   }
 
   public adicionarCampeonato() {
@@ -64,18 +67,21 @@ export class PesquisaCampeonatoComponent implements OnInit{
     this.router.navigate(['/campeonato']);
   }
 
-  public gerenciarCampeonato(campeoantoId: number) {
-
-    this.campeonatoServico.getCompetidores(campeoantoId).subscribe(
-      competidores => {
-        this.competidores = competidores;
-        console.log(JSON.stringify(competidores));
-        sessionStorage.setItem("competidores", JSON.stringify(this.competidores));
+  public gerenciarCampeonato(campeonato: Campeonato) {
+    sessionStorage.setItem("campeonatoStorage", JSON.stringify(campeonato));
+    //this.campeonatoServico.getCompetidores(campeonato.id).subscribe(
+    //  competidores => {
+    //    this.competidores = competidores;
+    //    console.log(JSON.stringify(competidores));
+        //sessionStorage.setItem("competidores", JSON.stringify(this.competidores));
         this.router.navigate(['/campeonato-competidores']);
-      },
-      e => {
-        console.log(e.error);
-      }
-    );
+    //  },
+    //  e => {
+    //    console.log(e.error);
+    //  }
+    //);
   }
+
+  
+
 }

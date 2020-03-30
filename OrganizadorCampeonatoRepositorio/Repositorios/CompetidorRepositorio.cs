@@ -27,6 +27,10 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
         {
             return OrganizadorCampeonatoContexto.Competidores.Where(c => c.CampeonatoId == campeonatoId).ToList();
         }
+        public List<Competidor> GetCompetidores(int campeonatoId, int status)
+        {
+            return OrganizadorCampeonatoContexto.Competidores.Where(c => c.CampeonatoId == campeonatoId && c.StatusInscricaoId == status).ToList();
+        }
         public void Competir(Competidor competidor)
         {
 
@@ -48,5 +52,19 @@ namespace OrganizadorCampeonatoRepositorio.Repositorios
 
             return false;
         }
+
+        public void atualizarInscricao(Competidor competidor)
+        {
+            Competidor comp = OrganizadorCampeonatoContexto.Competidores.Where(c => c.Id == competidor.Id).FirstOrDefault();
+            if(comp != null)
+            {
+                comp.StatusInscricaoId = competidor.StatusInscricaoId;
+
+                OrganizadorCampeonatoContexto.SaveChanges();
+               
+                }
+            return;
+        }
+
     }
 }

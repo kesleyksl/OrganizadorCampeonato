@@ -1,5 +1,5 @@
 
-<h1 class="h4 titulo mb-2">Competidores inscritos no Campeonato {{campeonato.campeonato.nome}}</h1>
+<h1 class="h4 titulo mb-2">Competidores inscritos no Campeonato {{campeonato.nome}}</h1>
 <p *ngIf="!competidores">Carregando Competidores...</p>
 <table class="table table-hover" *ngIf="competidores">
   <thead>
@@ -7,20 +7,36 @@
     <tr>
       <th>Nome</th>
       <th>Status</th>
-
+      <!--<th>Fase</th>-->
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let c of competidores">
-      <td style="width:50%;vertical-align: middle !important;">{{c.usuario.nome}}</td>
-      <td>
+      <td>{{c.usuario.nome}}</td>
+      <td  >
         {{c.statusInscricao.nome}}
       </td>
 
+      <!--<td *ngIf="c.statusInscricao.id === 2">
+        <select class="custom-select" id="inputGroupSelect01" (change)="selecionaFase($event.target.value, c.id)">
+          
+          <option value="0" selected>selecione</option>
 
-      <td><button class="btn btn-success btn-sm" *ngIf="c.statusInscricao.id == 2" (click)="editarCampeonato(c)">Confirmar Inscrição</button></td>
+          <option *ngFor="let f of fases" value="{{f.id}}" id="{{f.id}}">{{f.nome}} - {{f.data  | date: 'dd/MM/yyyy' }}</option>
 
-      <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Cancelar Inscrição</button></td>
+        </select>
+        
+      </td>-->
+
+      <td>
+        <button class="btn btn-secondary btn-sm mr-3"   (click)="confirmarInscricao(c, 1)">Confirmar Inscrição</button>
+       
+        <button class="btn btn-danger btn-sm" (click)="confirmarInscricao(c, 3)">Cancelar Inscrição</button>
+        
+      </td>
+
+      <!--<td  *ngIf="c.statusInscricao.id === 2"></td>-->
     </tr>
   </tbody>
 </table>

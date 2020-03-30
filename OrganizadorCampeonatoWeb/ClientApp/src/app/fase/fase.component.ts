@@ -134,4 +134,12 @@ export class FaseComponent implements OnInit {
       );
     }
   }
+
+  public competidoresFase(fase: Fase) {
+
+    sessionStorage.setItem("campeonato", JSON.stringify(this.campeonato));
+    sessionStorage.setItem("fase", JSON.stringify(fase));
+    this.router.navigate(['/fase-competidores']);
+  }
+
 }

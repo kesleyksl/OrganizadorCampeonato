@@ -59,7 +59,15 @@ export class CampeonatoServico implements OnInit {
     return this.http.get<Campeonato>(this._baseUrl + "api/campeonato/obterCampeonatos");
   }
   public getCompetidores(campeonatoId: number): Observable<Competidor[]> {
+
     return this.http.post<Competidor[]>(this._baseUrl + "api/Campeonato/GetCompetidores",campeonatoId, {headers: this.headers});
+  }
+  public getCompetidoresStatus(campeonatoId: number, status: number): Observable<Competidor[]> {
+    var body = {
+      campeonatoId: campeonatoId,
+      status: status
+    }
+    return this.http.post<Competidor[]>(this._baseUrl + "api/Campeonato/GetCompetidoresStatus", JSON.stringify({ campeonatoId: campeonatoId, status:status}), { headers: this.headers });
   }
   public enviarArquivo(arquivoSelecionado: File): Observable<string> {
     const formData: FormData = new FormData();

@@ -19,7 +19,7 @@ export class LojaEfetivarComponent implements OnInit{
   public competidor: Competidor;
   public error: Error;
   public success: string;
-
+  public ativar_spinner: boolean;
   constructor(private usuarioServico: UsuarioServico) {
 
   }
@@ -44,6 +44,14 @@ export class LojaEfetivarComponent implements OnInit{
         this.success = null;
       }
     )
+  }
+
+
+  public ativarEspera() {
+    this.ativar_spinner = true;
+  }
+  public desativarEspera() {
+    this.ativar_spinner = false;
   }
 
 

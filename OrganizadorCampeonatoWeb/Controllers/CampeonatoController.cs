@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using OrganizadorCampeonatoDominio.Contratos;
 using OrganizadorCampeonatoDominio.Entidades;
 using System;
@@ -55,6 +56,21 @@ namespace OrganizadorCampeonatoWeb.Controllers
                 return Json(competidores);
             }
             catch(Exception ex)
+            {
+                return BadRequest(ex.Message.ToString());
+            }
+        }
+        [HttpPost("GetCompetidoresStatus")]
+        public IActionResult GetCompetidoresStatus([FromBody]JObject jsonObject)
+        {
+            try
+            {
+                int status = int.Parse(jsonObject["status"].ToString());
+                int campeonatoId = int.Parse(jsonObject["campeonatoId"].ToString());
+                object competidores = _competidorRepositorio.GetCompetidores(campeonatoId, status);
+                return Json(competidores);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message.ToString());
             }

@@ -51,7 +51,15 @@ export class UsuarioServico {
         }
 
         return this.http.post<Usuario>(this.baseURL + "api/Usuario/VerificarUsuario", body, { headers });
-    }
+  }
+
+  public confirmarInscricao(competidor: Competidor): Observable<Competidor> {
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+
+
+    return this.http.post<Competidor>(this.baseURL + "api/Usuario/ConfirmarInscricao", competidor, { headers });
+  }
 
     public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
         const headers = new HttpHeaders().set('content-type', 'application/json');

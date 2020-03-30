@@ -28,7 +28,7 @@
           <div class="card-header">Resumo</div>
           <div class="card-body">
             <p>Ao efetivar a inscrição é necessário a confirmação por parte do organizador.</p>
-            <button  class="btn btn-danger col-12" (click)="competir()">Efetivar Cadastro</button>
+            <button class="btn btn-danger col-12" (click)="competir()"> <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>Efetivar Cadastro</button>
             
           </div>
           <div class="card-footer" *ngIf="error">

@@ -21,6 +21,8 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { FaseComponent } from './fase/fase.component';
 import { FaseServico } from './servicos/fase/fase.servico';
 import { CompetidoresComponent } from './campeonato/competidores/competidores.component';
+import { ListaFases } from './fase/lista/fase.lista.component';
+import { FaseCompetidoresComponent } from './fase/competidores/fase.competidores.component';
 
 
 @NgModule({
@@ -38,6 +40,9 @@ import { CompetidoresComponent } from './campeonato/competidores/competidores.co
     LojaEfetivarComponent,
     FaseComponent,
     CompetidoresComponent,
+    ListaFases,
+    FaseCompetidoresComponent
+
     
   ],
   imports: [
@@ -56,7 +61,8 @@ import { CompetidoresComponent } from './campeonato/competidores/competidores.co
       { path: 'loja-campeonato', component: LojaCampeonatoComponent }, 
       { path: 'loja-efetivar', component: LojaEfetivarComponent, canActivate: [GuardaRotas]},
       { path: 'fase', component: FaseComponent, canActivate: [GuardaRotas]},
-      { path: 'campeonato-competidores', component: CompetidoresComponent, canActivate: [GuardaRotas]}
+      { path: 'campeonato-competidores', component: CompetidoresComponent, canActivate: [GuardaRotas]},
+      { path: 'fase-competidores', component: FaseCompetidoresComponent, canActivate: [GuardaRotas]}
 
     ])
   ],

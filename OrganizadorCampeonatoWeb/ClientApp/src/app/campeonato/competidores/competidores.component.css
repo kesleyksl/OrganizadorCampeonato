@@ -1,2 +1,12 @@
-﻿body {
+body {
+}
+input{
+    width:0px;
+    height:0px;
+}
+lista-fases{
+    display: none;
+}
+input[type=checkbox]:checked ~ lista-fases {
+  display: block;
 }

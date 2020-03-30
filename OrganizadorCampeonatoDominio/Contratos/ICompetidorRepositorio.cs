@@ -7,7 +7,9 @@ namespace OrganizadorCampeonatoDominio.Contratos
     {
         bool ExisteInscricao(Competidor competidor);
         List<Competidor> GetCompetidores(int campeonatoId);
+        List<Competidor> GetCompetidores(int campeonatoId, int status);
         void Competir(Competidor competidor);
         bool EhOrganizador(Competidor competidor);
+        void atualizarInscricao(Competidor competidor);
     }
 }

@@ -9,7 +9,7 @@
     <tr>
       <th>Nome</th>
       <th>Flyer</th>
-
+      <th>Gerênciar</th>
     </tr>
   </thead>
   <tbody>
@@ -18,10 +18,25 @@
       <td>
         <img style="width:40%; min-width: 120px;" src="../../../../../arquivos/{{c.nomeArquivo}}" *ngIf="c.nomeArquivo" alt="Flyer do campeonato" />
       </td>
-      <td><button class="btn btn-primary btn-sm" (click)="gerenciarCampeonato(c.id)">Inscrições</button></td>
-      <td><button class="btn btn-success btn-sm" (click)="editarCampeonato(c)">Editar</button></td>
+      <td>
+        
+
+        <div class="btn-group">
+          <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Gerênciar
+          </button>
+          <div class="dropdown-menu">
+           
+            <button class="btn btn-primary btn-sm dropdown-item" (click)="gerenciarCampeonato(c)">Inscrições</button>
+            <button class="btn btn-success btn-sm dropdown-item" (click)="editarCampeonato(c)">Editar</button>
+            <button class="btn btn-warning btn-sm dropdown-item" (click)="editarFase(c)">Fases</button>
+            <button class="btn btn-danger btn-sm dropdown-item" (click)="deletarCampeonato(c)">Deletar</button>
+          </div>
+          </div>
+</td>
+      <!--<td><button class="btn btn-success btn-sm" (click)="editarCampeonato(c)">Editar</button></td>
       <td><button class="btn btn-warning btn-sm" (click)="editarFase(c)">Fases</button></td>
-      <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Deletar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletarCampeonato(c)">Deletar</button></td>-->
     </tr>
   </tbody>
 </table>

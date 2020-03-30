@@ -38,6 +38,8 @@
     <None Remove="ClientApp\src\app\campeonato\campeonato.component.ts" />
     <None Remove="ClientApp\src\app\campeonato\competidores\competidores.component.ts" />
     <None Remove="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
+    <None Remove="ClientApp\src\app\fase\competidores\fase.competidores.component.ts" />
+    <None Remove="ClientApp\src\app\fase\lista\fase.lista.component.ts" />
     <None Remove="ClientApp\src\app\loja\campeonato\loja.campeonato.component.ts" />
     <None Remove="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <None Remove="ClientApp\src\app\modelo\Campeonato.ts" />
@@ -59,6 +61,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\campeonato.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\competidores\competidores.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\campeonato\pesquisa\pesquisa.campeonato.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\fase\competidores\fase.competidores.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\fase\lista\fase.lista.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\campeonato\loja.campeonato.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modelo\Campeonato.ts" />

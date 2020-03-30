@@ -14,15 +14,11 @@ namespace OrganizadorCampeonatoRepositorio.Config
             builder
                 .Property(uf => uf.CompetidorId)
                 .IsRequired();
-            builder
-                .Property(uf => uf.MusicaId)
-                .IsRequired();
+            
             builder
                 .Property(uf => uf.FaseId)
                 .IsRequired();
-            builder
-                .Property(uf => uf.Nota)
-                .IsRequired();
+
 
 
         }

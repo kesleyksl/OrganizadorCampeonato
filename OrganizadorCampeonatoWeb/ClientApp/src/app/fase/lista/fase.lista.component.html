@@ -1,0 +1,9 @@
+<div *ngIf="!fases" class="alert alert-danger" >
+  O campeonato não possui fases
+</div>
+
+<div *ngIf="fases">
+  <div *ngFor="let f of fases">
+    <button class="btn btn-dark btn" id="{{f.id}}">{{f.nome}} - {{f.data  | date: 'dd/MM/yyyy' }}</button>
+  </div>
+</div>

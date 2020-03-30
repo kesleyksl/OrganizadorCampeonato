@@ -15,11 +15,13 @@ namespace OrganizadorCampeonatoWeb.Controllers
 
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly ICompetIdorRepositorio _competidorRepositorio;
+        private readonly IUsuarioFaseRepositorio _usuarioFaseRepositorio;
         
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, ICompetIdorRepositorio competIdorRepositorio)
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, ICompetIdorRepositorio competIdorRepositorio, IUsuarioFaseRepositorio usuarioFaseRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
             _competidorRepositorio = competIdorRepositorio;
+            _usuarioFaseRepositorio = usuarioFaseRepositorio;
 
         }
 
@@ -62,12 +64,20 @@ namespace OrganizadorCampeonatoWeb.Controllers
         {
             try
             {
-                usuario.Senha = Auxiliary.Cryptography.Encrypt(usuario.Senha);
-                var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
-               if(usuarioRetorno != null)
+                try
                 {
-                    return Ok(usuarioRetorno);
+                    usuario.Senha = Auxiliary.Cryptography.Encrypt(usuario.Senha);
+                    var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
+                    if (usuarioRetorno != null)
+                    {
+                        return Ok(usuarioRetorno);
+                    }
                 }
+                catch (Exception ex)
+                {
+
+                }
+               
 
                 
                 return BadRequest("Usuário ou senha inválido");
@@ -77,7 +87,24 @@ namespace OrganizadorCampeonatoWeb.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+        [HttpPost("ConfirmarInscricao")]
+        public ActionResult ConfirmarInscricao([FromBody] Competidor competidor)
+        {
+            try
+            {
+                
+                _competidorRepositorio.atualizarInscricao(competidor);
+                    return Ok();
 
+               
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+          
+        }
 
         [HttpPost("Competir")]
         public ActionResult Competir([FromBody] Competidor competidor)

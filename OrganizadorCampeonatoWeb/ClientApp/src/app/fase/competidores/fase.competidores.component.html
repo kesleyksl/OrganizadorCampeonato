@@ -1,0 +1,62 @@
+<div class="d-flex" (onload)="filtraCompetidores()">
+
+  <div class="col-6">
+
+
+    <p *ngIf="!competidores">Carregando Competidores...</p>
+    <h2 *ngIf="competidores">Inscritos {{campeonato.nome}}</h2>
+    <table class="table table-hover" *ngIf="competidores">
+      <thead>
+
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of competidores">
+          <td>{{c.usuario.nome}}</td>
+
+          <td>
+            <button class="btn btn-secondary btn-sm mr-3" (click)="cadastrarCompetidor(c.id)">Cadastrar</button>
+
+
+          </td>
+
+          <!--<td  *ngIf="c.statusInscricao.id === 2"></td>-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-6">
+
+
+    <p *ngIf="!competidoresFase">Carregando Competidores...</p>
+    <h2 *ngIf="competidoresFase">Competidores {{fase.nome}}</h2>
+
+    <table class="table table-hover" *ngIf="competidoresFase">
+      <thead>
+
+        <tr>
+          <th>Nome</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of competidoresFase">
+          <td>{{c.usuario.nome}}</td>
+
+          <td>
+            <button class="btn btn-danger btn-sm mr-3" (click)="remover(c.id, c.competidorFaseId)">Remover</button>
+
+
+          </td>
+
+          <!--<td  *ngIf="c.statusInscricao.id === 2"></td>-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
